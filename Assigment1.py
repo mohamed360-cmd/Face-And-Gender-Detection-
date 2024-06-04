@@ -3,7 +3,7 @@ Assigment 1 Detect Faces from static Images Predict their Gender and the Age of 
 '''
 import cv2
 face_Classifier = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml") # getting the face detection Model 
-img = cv2.imread('./Images/img3.jpg',1) 
+img = cv2.imread('./Images/img1.jpg',1) 
 grayScaleImage = cv2.cvtColor(img,0) 
 GENDER_MODEL = 'Weights/deploy_gender.prototxt'
 GENDER_PROTO = 'Weights/gender_net.caffemodel'
@@ -13,7 +13,7 @@ MODEL_MEAN_VALUES = (78.4263377603, 87.7689143744, 114.895847746)
 GENDER_LIST = ['Male', 'Female']
 AGE_INTERVALS = ['(0, 2)', '(4, 6)', '(8, 12)', '(15, 20)',
                  '(25, 32)', '(38, 43)', '(48, 53)', '(60, 100)']
-faces = face_Classifier.detectMultiScale(grayScaleImage,1.01,2)
+faces = face_Classifier.detectMultiScale(grayScaleImage,1.3,2)
 face_NET = cv2.dnn.readNetFromCaffe(GENDER_MODEL, GENDER_PROTO)
 age_NET = cv2.dnn.readNetFromCaffe(AGE_MODEL, AGE_PROTO)
 for (x,y,w,h) in faces :
